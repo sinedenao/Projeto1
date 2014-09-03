@@ -19,9 +19,21 @@ class Cliente {
         $this->db = $db;
     }
 
-    public function listar()
+    public function listar($order = null)
     {
+        if($order)
+        {
+            $query = "select * from clientes order by {$order}";
+        }
+        else
+        {
+           $query = "select * from clientes";
+        }
 
+
+
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function inserir()

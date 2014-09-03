@@ -14,6 +14,10 @@ catch (Exception $e)
 $cliente = new Cliente($conexao);
 $cliente->setNome('Denis')
         ->setEmail('denis@teste.com.br');
-$resultado = $cliente->inserir();
+#$resultado = $cliente->inserir();
 
-echo $resultado;
+foreach($cliente->listar("id desc") as $c)
+{
+    echo $c['nome']."<BR>";
+}
+
